@@ -1,29 +1,40 @@
 <?php
-
-$pdo = new PDO('mysql:host=127.0.0.1;dbname=article', 'root', 'root');
-
-$stmt = $pdo->prepare('SELECT * from article');
+$pdo = new PDO('mysql:host=localhost;dbname=students', 'root', 'Krntsk020594');
+$stmt = $pdo->prepare('SELECT * from students');
 $stmt->execute();
 
 ?>
+<?php require 'header.php'; ?>
 
-<table>
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-header">
+      <h2>All Students</h2>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered">
     <tr>
         <td>id</td>
-        <td>name</td>
-        <td>description</td>
-        <td>created_at</td>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>Age</td>
+        <td>University</td>
+        <th>Action</th>
     </tr>
     <?php foreach ($stmt->fetchAll() as $row) { ?>
         <tr>
-            <td><?php echo $row['id'] ?></td>
-            <td><?php echo $row['name'] ?></td>
-            <td><?php echo $row['description'] ?></td>
-            <td><?php echo $row['created_at'] ?></td>
-            <td><a href="edit.php?id=<?php echo $row['id'] ?>">edit</a></td>
-            <td><a href="delete.php?id=<?php echo $row['id'] ?>">delete</a></td>
+            <td><?php echo $row['st_id'] ?></td>
+            <td><?php echo $row['st_first_name'] ?></td>
+            <td><?php echo $row['st_last_name'] ?></td>
+            <td><?php echo $row['st_age'] ?></td>
+            <td><?php echo $row['un_name'] ?></td>
+            <td>
+            <a href="edit.php?st_id=<?php echo $row['st_id'] ?>" class="btn btn-info">Edit</a>
+            <a onclick="return confirm('Are you sure you want to delete this student?')" href="delete.php?st_id=<?php echo $row['st_id'] ?>" class='btn btn-danger'>Delete</a>
+          </td>
         </tr>
     <?php } ?>
 </table>
 <br>
-<a href="create.php">create</a>
+<a href="create.php" class="btn btn-info">Create a student</a>
+<?php require 'footer.php'; ?>
