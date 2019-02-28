@@ -14,11 +14,11 @@ $stmt->execute();
     <div class="card-body">
       <table class="table table-bordered">
     <tr>
-        <td>id</td>
-        <td>First name</td>
-        <td>Last name</td>
-        <td>Age</td>
-        <td>University</td>
+        <th>id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Age</th>
+        <th>University</th>
         <th>Action</th>
     </tr>
     <?php foreach ($stmt->fetchAll() as $row) { ?>
@@ -37,4 +37,4 @@ $stmt->execute();
 </table>
 <br>
 <a href="create.php" class="btn btn-info">Create a student</a>
-<?php require 'footer.php'; ?>
+ <?php require 'footer.php'; ?>
