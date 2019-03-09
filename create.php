@@ -1,5 +1,5 @@
 <?php
-
+require ('connect_db.php');//connection to the "student" database
 
 if (isset($_POST['st_first_name']) &&
     isset($_POST['st_last_name']) &&
@@ -7,7 +7,8 @@ if (isset($_POST['st_first_name']) &&
     isset($_POST['un_name'])
 
   ) {
-    $pdo = new PDO('mysql:host=localhost;dbname=students', 'root', 'Krntsk020594');
+    // $pdo = new PDO('mysql:host=localhost;dbname=students', 'root', 'Krntsk020594');
+
 
     $stmt = $pdo->prepare('INSERT INTO students (st_first_name, st_last_name, st_age, un_name)
                            VALUES (:st_first_name, :st_last_name, :st_age, :un_name)');

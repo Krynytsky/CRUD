@@ -1,6 +1,8 @@
 <?php
 
-$pdo = new PDO('mysql:host=localhost;dbname=students', 'root', 'Krntsk020594');
+require ('connect_db.php');//connection to the "student" database
+
+
 $stmt = $pdo->prepare('SELECT * from students WHERE st_id = :st_id');
 $stmt->bindValue('st_id', $_GET['st_id']);
 $stmt->execute();
